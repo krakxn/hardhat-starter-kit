@@ -1,4 +1,5 @@
-# Taken from Chainlink - thank you!
+# (Hardhat) Starter-kit
+### Taken from Chainlink - thank you!
 
 <br/>
 <p align="center">
@@ -10,7 +11,6 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/smartcontractkit/hardhat-starter-kit)
 
-- [Taken from Chainlink - thank you!](#taken-from-chainlink---thank-you)
 - [Chainlink Hardhat Starter Kit](#chainlink-hardhat-starter-kit)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
