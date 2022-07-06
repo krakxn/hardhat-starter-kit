@@ -1,3 +1,5 @@
+# Taken from Chainlink - thank you!
+
 <br/>
 <p align="center">
 <a href="https://chain.link" target="_blank">
@@ -8,6 +10,7 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/smartcontractkit/hardhat-starter-kit)
 
+- [Taken from Chainlink - thank you!](#taken-from-chainlink---thank-you)
 - [Chainlink Hardhat Starter Kit](#chainlink-hardhat-starter-kit)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
@@ -21,6 +24,7 @@
   - [Forking](#forking)
   - [Auto-Funding](#auto-funding)
 - [Test](#test)
+  - [Performance optimizations](#performance-optimizations)
 - [Interacting with Deployed Contracts](#interacting-with-deployed-contracts)
   - [Chainlink Price Feeds](#chainlink-price-feeds)
   - [Request & Receive Data](#request--receive-data)
@@ -31,7 +35,7 @@
 - [Linting](#linting)
 - [Code Formating](#code-formating)
 - [Estimaging Gas](#estimaging-gas)
-- [Code Coverage](#code-coverage)
+- [Code coverage](#code-coverage)
 - [Fuzzing](#fuzzing)
 - [Contributing](#contributing)
 - [Thank You!](#thank-you)
