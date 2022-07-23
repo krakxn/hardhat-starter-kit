@@ -6,11 +6,11 @@ task("read-random-number", "Reads the random number returned to a contract by Ch
     console.log("Reading data from VRF contract ", contractAddr, " on network ", networkId)
     const RandomNumberConsumerV2 = await ethers.getContractFactory("RandomNumberConsumerV2")
 
-    //Get signer information
+    // Get signer information
     const accounts = await hre.ethers.getSigners()
     const signer = accounts[0]
 
-    //Create connection to API Consumer Contract and call the createRequestTo function
+    // Create connection to API Consumer Contract and call the createRequestTo function
     const vrfConsumerContractV2 = new ethers.Contract(
       contractAddr,
       RandomNumberConsumerV2.interface,
