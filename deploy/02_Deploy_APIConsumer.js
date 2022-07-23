@@ -13,7 +13,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   let linkTokenAddress
   let oracle
   let additionalMessage = ""
-  //set log level to ignore non errors
+  
+  // Set log level to ignore non errors
   ethers.utils.Logger.setLogLevel(ethers.utils.Logger.levels.ERROR)
 
   if (chainId == 31337) {
@@ -26,13 +27,16 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     linkTokenAddress = networkConfig[chainId]["linkToken"]
     oracle = networkConfig[chainId]["oracle"]
   }
+  
   const jobId = ethers.utils.toUtf8Bytes(networkConfig[chainId]["jobId"])
   const fee = networkConfig[chainId]["fee"]
 
   const waitBlockConfirmations = developmentChains.includes(network.name)
     ? 1
     : VERIFICATION_BLOCK_CONFIRMATIONS
+  
   const args = [oracle, jobId, fee, linkTokenAddress]
+  
   const apiConsumer = await deploy("APIConsumer", {
     from: deployer,
     args: args,
@@ -65,4 +69,5 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   log(`yarn hardhat request-data --contract ${apiConsumer.address} --network ${networkName}`)
   log("----------------------------------------------------")
 }
+
 module.exports.tags = ["all", "api", "main"]
