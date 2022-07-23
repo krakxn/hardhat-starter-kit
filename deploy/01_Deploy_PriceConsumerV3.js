@@ -10,20 +10,22 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments
   const { deployer } = await getNamedAccounts()
   const chainId = network.config.chainId
-
   let ethUsdPriceFeedAddress
+  
   if (chainId == 31337) {
     const EthUsdAggregator = await deployments.get("MockV3Aggregator")
     ethUsdPriceFeedAddress = EthUsdAggregator.address
   } else {
     ethUsdPriceFeedAddress = networkConfig[chainId]["ethUsdPriceFeed"]
   }
-  // Price Feed Address, values can be obtained at https://docs.chain.link/docs/reference-contracts
-  // Default one below is ETH/USD contract on Kovan
+  
+  // Pricefeed addressses can be obtained at https://docs.chain.link/docs/reference-contracts
+  // Default one below is ETH / USD contract on Kovan
   const waitBlockConfirmations = developmentChains.includes(network.name)
     ? 1
     : VERIFICATION_BLOCK_CONFIRMATIONS
   log("----------------------------------------------------")
+  
   const priceConsumerV3 = await deploy("PriceConsumerV3", {
     from: deployer,
     args: [ethUsdPriceFeedAddress],
