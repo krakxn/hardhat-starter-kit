@@ -15,10 +15,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
   if (chainId == 31337) {
     VRFCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
-
     vrfCoordinatorAddress = VRFCoordinatorV2Mock.address
-
     const fundAmount = networkConfig[chainId]["fundAmount"]
+    
+    // Create subscription
     const transaction = await VRFCoordinatorV2Mock.createSubscription()
     const transactionReceipt = await transaction.wait(1)
     subscriptionId = ethers.BigNumber.from(transactionReceipt.events[0].topics[1])
@@ -27,11 +27,15 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     subscriptionId = process.env.VRF_SUBSCRIPTION_ID
     vrfCoordinatorAddress = networkConfig[chainId]["vrfCoordinator"]
   }
+  
   const keyHash = networkConfig[chainId]["keyHash"]
+  
   const waitBlockConfirmations = developmentChains.includes(network.name)
     ? 1
     : VERIFICATION_BLOCK_CONFIRMATIONS
+  
   const args = [subscriptionId, vrfCoordinatorAddress, keyHash]
+  
   const randomNumberConsumerV2 = await deploy("RandomNumberConsumerV2", {
     from: deployer,
     args: args,
