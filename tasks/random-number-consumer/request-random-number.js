@@ -11,11 +11,11 @@ task("request-random-number", "Requests a random number for a Chainlink VRF enab
     )
     const RandomNumberConsumerV2 = await ethers.getContractFactory("RandomNumberConsumerV2")
 
-    //Get signer information
+    // Get signer information
     const accounts = await hre.ethers.getSigners()
     const signer = accounts[0]
 
-    //Create connection to VRF Contract and call the getRandomNumber function
+    // Create connection to VRF Contract and call the getRandomNumber function
     const vrfConsumerContractV2 = new ethers.Contract(
       contractAddr,
       RandomNumberConsumerV2.interface,
