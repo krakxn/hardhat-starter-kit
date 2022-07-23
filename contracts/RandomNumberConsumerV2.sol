@@ -12,27 +12,27 @@ import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 contract RandomNumberConsumerV2 is VRFConsumerBaseV2 {
   VRFCoordinatorV2Interface immutable COORDINATOR;
 
-  // Your subscription ID.
+  /// Your subscription ID.
   uint64 immutable s_subscriptionId;
 
-  // The gas lane to use, which specifies the maximum gas price to bump to.
-  // For a list of available gas lanes on each network,
-  // see https://docs.chain.link/docs/vrf-contracts/#configurations
+  /// The gas lane to use, which specifies the maximum gas price to bump to.
+  /// For a list of available gas lanes on each network, see:
+  /// https://docs.chain.link/docs/vrf-contracts/#configurations
   bytes32 immutable s_keyHash;
 
-  // Depends on the number of requested values that you want sent to the
-  // fulfillRandomWords() function. Storing each word costs about 20,000 gas,
-  // so 100,000 is a safe default for this example contract. Test and adjust
-  // this limit based on the network that you select, the size of the request,
-  // and the processing of the callback request in the fulfillRandomWords()
-  // function.
+  /// Depends on the number of requested values that you want sent to the
+  /// fulfillRandomWords() function. Storing each word costs about 20,000 gas,
+  /// so 100,000 is a safe default for this example contract. Test and adjust
+  /// this limit based on the network that you select, the size of the request,
+  /// and the processing of the callback request in the fulfillRandomWords()
+  /// function.
   uint32 constant CALLBACK_GAS_LIMIT = 100000;
 
-  // The default is 3, but you can set this higher.
+  /// The default is 3, but you can set this higher.
   uint16 constant REQUEST_CONFIRMATIONS = 3;
 
-  // For this example, retrieve 2 random values in one request.
-  // Cannot exceed VRFCoordinatorV2.MAX_NUM_WORDS.
+  /// For this example, retrieve 2 random values in one request.
+  /// Cannot exceed VRFCoordinatorV2.MAX_NUM_WORDS.
   uint32 constant NUM_WORDS = 2;
 
   uint256[] public s_randomWords;
@@ -43,7 +43,6 @@ contract RandomNumberConsumerV2 is VRFConsumerBaseV2 {
 
   /**
    * @notice Constructor inherits VRFConsumerBaseV2
-   *
    * @param subscriptionId - the subscription ID that this contract uses for funding requests
    * @param vrfCoordinator - coordinator, check https://docs.chain.link/docs/vrf-contracts/#configurations
    * @param keyHash - the gas lane to use, which specifies the maximum gas price to bump to
@@ -76,7 +75,6 @@ contract RandomNumberConsumerV2 is VRFConsumerBaseV2 {
 
   /**
    * @notice Callback function used by VRF Coordinator
-   *
    * @param requestId - id of the request
    * @param randomWords - array of random results from VRF Coordinator
    */
