@@ -8,7 +8,6 @@ task("balance", "Prints an account's balance")
   .setAction(async (taskArgs) => {
     const account = ethers.utils.getAddress(taskArgs.account)
     const balance = await provider.getBalance(account)
-
     console.log(ethers.utils.formatEther(balance), "ETH")
   })
 
