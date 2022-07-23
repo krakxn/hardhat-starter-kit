@@ -24,7 +24,7 @@ const { developmentChains } = require("../../helper-hardhat-config")
         await randomNumberConsumerV2.requestRandomWords()
         const requestId = await randomNumberConsumerV2.s_requestId()
 
-        // simulate callback from the oracle network
+        // Simulate callback from the oracle network
         await expect(
           vrfCoordinatorV2Mock.fulfillRandomWords(requestId, randomNumberConsumerV2.address)
         ).to.emit(randomNumberConsumerV2, "ReturnedRandomness")
@@ -49,6 +49,7 @@ const { developmentChains } = require("../../helper-hardhat-config")
             console.log("ReturnedRandomness event fired!")
             const firstRandomNumber = await randomNumberConsumerV2.s_randomWords(0)
             const secondRandomNumber = await randomNumberConsumerV2.s_randomWords(1)
+            
             // assert throws an error if it fails, so we need to wrap
             // it in a try/catch so that the promise returns event
             // if it fails.
@@ -60,6 +61,7 @@ const { developmentChains } = require("../../helper-hardhat-config")
               reject(e)
             }
           })
+          
           await randomNumberConsumerV2.requestRandomWords()
           const requestId = await randomNumberConsumerV2.s_requestId()
           vrfCoordinatorV2Mock.fulfillRandomWords(requestId, randomNumberConsumerV2.address)
