@@ -8,11 +8,11 @@ task("request-data", "Calls an API Consumer Contract to request external data")
     console.log("Calling API Consumer contract ", contractAddr, " on network ", network.name)
     const APIConsumer = await ethers.getContractFactory("APIConsumer")
 
-    //Get signer information
+    // Get signer information
     const accounts = await ethers.getSigners()
     const signer = accounts[0]
 
-    //Create connection to API Consumer Contract and call the createRequestTo function
+    // Create connection to API Consumer Contract and call the createRequestTo function
     const apiConsumerContract = new ethers.Contract(contractAddr, APIConsumer.interface, signer)
     var result = await apiConsumerContract.requestVolumeData()
     console.log(
@@ -24,4 +24,5 @@ task("request-data", "Calls an API Consumer Contract to request external data")
     console.log("Run the following to read the returned result:")
     console.log("npx hardhat read-data --contract " + contractAddr + " --network " + network.name)
   })
+
 module.exports = {}
