@@ -8,7 +8,7 @@ task("read-price-feed-ens", "Gets the latest price from a Chainlink Price Feed")
     const V3Aggregator = await ethers.getContractFactory("MockV3Aggregator")
     console.log("Reading data from Price Feed consumer contract ", ensAddress)
 
-    //Get signer information
+    // Get signer information
     const accounts = await ethers.getSigners()
     const signer = accounts[0]
     const priceFeedConsumerContract = await new ethers.Contract(
@@ -16,6 +16,7 @@ task("read-price-feed-ens", "Gets the latest price from a Chainlink Price Feed")
       V3Aggregator.interface,
       signer
     )
+    
     await priceFeedConsumerContract.latestRoundData().then((data) => {
       console.log("Price is: ", BigInt(data["answer"]).toString())
     })
