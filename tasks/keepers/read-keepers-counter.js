@@ -10,7 +10,7 @@ task(
     const KeepersCounterContract = await ethers.getContractFactory("KeepersCounter")
     console.log("Reading counter from Keepers contract ", contractAddr, " on network ", networkId)
 
-    //Get signer information
+    // Get signer information
     const accounts = await ethers.getSigners()
     const signer = accounts[0]
     const keepersCounterContract = await new ethers.Contract(
@@ -18,6 +18,7 @@ task(
       KeepersCounterContract.interface,
       signer
     )
+    
     await keepersCounterContract.counter().then((data) => {
       console.log("Counter is: ", BigInt(data).toString())
     })
