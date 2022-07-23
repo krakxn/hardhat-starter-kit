@@ -10,7 +10,8 @@ const autoFundCheck = async (contractAddr, networkName, linkTokenAddress, additi
   const chainId = network.config.chainId
   console.log("Checking to see if contract can be auto-funded with LINK:")
   const amount = networkConfig[chainId]["fundAmount"]
-  //check to see if user has enough LINK
+  
+  // Check to see if user has enough LINK
   const accounts = await ethers.getSigners()
   const signer = accounts[0]
   const LinkToken = await ethers.getContractFactory("LinkToken")
@@ -20,11 +21,11 @@ const autoFundCheck = async (contractAddr, networkName, linkTokenAddress, additi
   const contractBalanceBN = await linkTokenContract.balanceOf(contractAddr)
   const contractBalance = await contractBalanceBN.toString()
   if (balance > amount && amount > 0 && contractBalance < amount) {
-    //user has enough LINK to auto-fund
-    //and the contract isn't already funded
+    // User has enough LINK to auto-fund
+    // and the contract isn't already funded
     return true
   } else {
-    //user doesn't have enough LINK, print a warning
+    // User doesn't have enough LINK, print a warning
     console.log(
       "Account doesn't have enough LINK to fund contracts, you're deploying to a network where auto funding isnt' done by default, the contract is already funded, or you set AUTO_FUND to false."
     )
