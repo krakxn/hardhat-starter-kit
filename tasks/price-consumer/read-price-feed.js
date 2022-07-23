@@ -12,7 +12,7 @@ task("read-price-feed", "Gets the latest price from a Chainlink Price Feed")
       networkId
     )
 
-    //Get signer information
+    // Get signer information
     const accounts = await ethers.getSigners()
     const signer = accounts[0]
     const priceFeedConsumerContract = await new ethers.Contract(
@@ -20,6 +20,7 @@ task("read-price-feed", "Gets the latest price from a Chainlink Price Feed")
       PriceFeedConsumerContract.interface,
       signer
     )
+    
     await priceFeedConsumerContract.getLatestPrice().then((data) => {
       console.log("Price is: ", BigInt(data).toString())
     })
