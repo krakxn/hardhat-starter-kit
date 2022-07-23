@@ -16,7 +16,6 @@ const { numToBytes32 } = require("@chainlink/test-helpers/dist/src/helpers")
         additionalMessage = ` --linkaddress  ${linkTokenAddress}`
         apiConsumer = await ethers.getContract("APIConsumer")
         mockOracle = await ethers.getContract("MockOracle")
-
         await hre.run("fund-link", { contract: apiConsumer.address, linkaddress: linkTokenAddress })
       })
 
@@ -40,12 +39,14 @@ const { numToBytes32 } = require("@chainlink/test-helpers/dist/src/helpers")
 
       it("Our event should successfully fire event on callback", async () => {
         const callbackValue = 777
-        // we setup a promise so we can wait for our callback from the `once` function
+        
+        // We setup a promise so we can wait for our callback from the `once` function
         await new Promise(async (resolve, reject) => {
-          // setup listener for our event
+          // Setup listener for our event
           apiConsumer.once("DataFullfilled", async () => {
             console.log("DataFullfilled event fired!")
             const volume = await apiConsumer.volume()
+            
             // assert throws an error if it fails, so we need to wrap
             // it in a try/catch so that the promise returns event
             // if it fails.
@@ -56,6 +57,7 @@ const { numToBytes32 } = require("@chainlink/test-helpers/dist/src/helpers")
               reject(e)
             }
           })
+          
           const transaction = await apiConsumer.requestVolumeData()
           const transactionReceipt = await transaction.wait(1)
           const requestId = transactionReceipt.events[0].topics[1]
