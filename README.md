@@ -1,5 +1,6 @@
-# (Hardhat) Starter-kit
-### Taken from Chainlink - thank you!
+# StarterKit - Hardhat:
+
+### References from Chainlink - Click below!
 
 <br/>
 <p align="center">
@@ -9,79 +10,34 @@
 </p>
 <br/>
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/smartcontractkit/hardhat-starter-kit)
-
-- [Chainlink Hardhat Starter Kit](#chainlink-hardhat-starter-kit)
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-  - [Quickstart](#quickstart)
-    - [Typescript](#typescript)
-- [Usage](#usage)
-  - [Deploying Contracts](#deploying-contracts)
-  - [Run a Local Network](#run-a-local-network)
-  - [Using a Testnet or Live Network (like Mainnet or Polygon)](#using-a-testnet-or-live-network-like-mainnet-or-polygon)
-    - [Rinkeby Ethereum Testnet Setup](#rinkeby-ethereum-testnet-setup)
-  - [Forking](#forking)
-  - [Auto-Funding](#auto-funding)
-- [Test](#test)
-  - [Performance optimizations](#performance-optimizations)
-- [Interacting with Deployed Contracts](#interacting-with-deployed-contracts)
-  - [Chainlink Price Feeds](#chainlink-price-feeds)
-  - [Request & Receive Data](#request--receive-data)
-  - [VRF Get a random number](#vrf-get-a-random-number)
-  - [Keepers](#keepers)
-  - [Verify on Etherscan](#verify-on-etherscan)
-- [View Contracts Size](#view-contracts-size)
-- [Linting](#linting)
-- [Code Formating](#code-formating)
-- [Estimaging Gas](#estimaging-gas)
-- [Code coverage](#code-coverage)
-- [Fuzzing](#fuzzing)
-- [Contributing](#contributing)
-- [Thank You!](#thank-you)
-  - [Resources](#resources)
-
-# Chainlink Hardhat Starter Kit
+# Hardhat Starter Kit:
  Implementation of the following 4 Chainlink features using the [Hardhat](https://hardhat.org/) development environment:
  - [Chainlink Price Feeds](https://docs.chain.link/docs/using-chainlink-reference-contracts)
  - [Chainlink VRF](https://docs.chain.link/docs/chainlink-vrf)
  - [Chainlink Keepers](https://docs.chain.link/docs/chainlink-keepers/introduction/)
- - [Request & Receive data](https://docs.chain.link/docs/request-and-receive-data)
+ - [Request & Receive Data](https://docs.chain.link/docs/request-and-receive-data)
 
 # Getting Started 
 
-It's recommended that you've gone through the [hardhat getting started documentation](https://hardhat.org/getting-started/) before proceeding here. 
-
-## Requirements
-
-- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - You'll know you did it right if you can run `git --version` and you see a response like `git version x.x.x`
-- [Nodejs](https://nodejs.org/en/)
-  - You'll know you've installed nodejs right if you can run:
-    - `node --version`and get an ouput like: `vx.x.x`
-- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) instead of `npm`
-  - You'll know you've installed yarn right if you can run:
-    - `yarn --version` And get an output like: `x.x.x`
-    - You might need to install it with npm
-
-> If you're familiar with `npx` and `npm` instead of `yarn`, you can use `npx` for execution and `npm` for installing dependencies. 
+It's recommended that you've gone through the [Hardhat getting started documentation](https://hardhat.org/getting-started/) before proceeding here. 
 
 ## Quickstart
 
-1. Clone and install dependencies
+1. Clone the repo and install dependencies
 
-After installing all the requirements, run the following:
+Then, run the following: 
 
+*Note: `url` refers to the repo's and `path` refers to the repo on your local directory for `cd`*
 ```bash
-git clone https://github.com/smartcontractkit/hardhat-starter-kit/
-cd hardhat-starter-kit
+git clone `url`
+cd `path`
 ```
 Then:
 ```
 yarn
 ```
 
-or
+or,
 ```
 npm i
 ```
@@ -98,9 +54,9 @@ or
 npm test
 ```
 
-### Typescript
+### TypeScript
 
-To use typescript, run:
+To use TypeScript, run:
 
 ```
 git checkout typescript
@@ -139,21 +95,21 @@ module.exports = {
   networks: {
 ```
 
-This section of the file is where you define which networks you want to interact with. You can read more about that whole file in the [hardhat documentation.](https://hardhat.org/config/)
+This section of the file is where you define which networks you want to interact with. You can read more about that whole file in the [Hardhat documentation.](https://hardhat.org/config/)
 
 To interact with a live or test network, you'll need:
 
-1. An rpc URL 
+1. A RPC URL 
 2. A Private Key
 3. ETH & LINK token (either testnet or real)
 
-Let's look at an example of setting these up using the Rinkeby testnet. 
+Let's look at an example of setting these up using the Rinkeby testnet:
 
 ### Rinkeby Ethereum Testnet Setup
 
-First, we will need to set environment variables. We can do so by setting them in our `.env` file (create it if it's not there). You can also read more about [environment variables](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html) from the linked twilio blog. You'll find a sample of what this file will look like in `.env.example`
+First, we will need to set environment variables. We can do so by setting them in our `.env` file (create it if it's not there). You can also read more about [environment variables](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html) from the linked blog. You'll find a sample of what this file will look like in `.env.example`
 
-> IMPORTANT: MAKE SURE YOU'D DONT EXPOSE THE KEYS YOU PUT IN THIS `.env` FILE. By that, I mean don't push them to a public repo, and please try to keep them keys you use in development not associated with any real funds. 
+> IMPORTANT: MAKE SURE YOU DON'T EXPOSE THE KEYS YOU PUT IN THIS `.env` FILE. By that, I mean don't push them to a public repo, and please try to keep them keys you use in development not associated with any real funds. 
 
 1. Set your `RINKEBY_RPC_URL` [environment variable.](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
 
@@ -165,9 +121,9 @@ This is your private key from your wallet, ie [MetaMask](https://metamask.io/). 
 
 ![WARNING](https://via.placeholder.com/15/f03c15/000000?text=+) **WARNING** ![WARNING](https://via.placeholder.com/15/f03c15/000000?text=+)
 
-When developing, it's best practice to use a Metamask that isn't associated with any real money. A good way to do this is to make a new browser profile (on Chrome, Brave, Firefox, etc) and install Metamask on that brower, and never send this wallet money.  
+When developing, it's best practice to use a MetaMask that isn't associated with any real money. A good way to do this is to make a new browser profile (on Chrome, Brave, Firefox, etc) and install MetaMask on that brower, and never send this wallet money.  
 
-Don't commit and push any changes to .env files that may contain sensitive information, such as a private key! If this information reaches a public GitHub repository, someone can use it to check if you have any Mainnet funds in that wallet address, and steal them!
+Don't commit and push any changes to `.env` files that may contain sensitive information, such as a private key! If this information reaches a public GitHub repository, someone can use it to check if you have any Mainnet funds in that wallet address, and steal them!
 
 `.env` example:
 ```
@@ -186,7 +142,7 @@ For other networks like mainnet and polygon, you can use different environment v
 
 3. Get some Rinkeby Testnet ETH and LINK 
 
-Head over to the [Chainlink faucets](https://faucets.chain.link/) and get some ETH and LINK. Please follow [the chainlink documentation](https://docs.chain.link/docs/acquire-link/) if unfamiliar. 
+Head over to the [Chainlink faucets](https://faucets.chain.link/) and get some ETH and LINK. Please follow [the Chainlink documentation](https://docs.chain.link/docs/acquire-link/) if unfamiliar. 
 
 4. Create VRF V2 subscription
 
@@ -364,7 +320,7 @@ yarn lint:fix
 
 # Code Formating
 
-This will format both your javascript and solidity to look nicer. 
+This will format both your JavaScript and Solidity to look nicer. 
 
 ```
 yarn format
@@ -391,7 +347,7 @@ yarn coverage
 
 We are going to use Echidna as a Fuzz testing tool. You need to have [Docker](https://www.docker.com/) installed with at least 8GB virtual memory allocated (To update this parameter go to _Settings->Resources->Advanced->Memory_). 
 
-To start Echidna instance run
+To start Echidna instance run:
 
 ```
 yarn fuzzing
@@ -399,12 +355,12 @@ yarn fuzzing
 
 If you are using it for the first time, you will need to wait for Docker to download [eth-security-toolbox](https://hub.docker.com/r/trailofbits/eth-security-toolbox) image for us.
 
-To start Fuzzing run
+To start Fuzzing run:
 ```
 echidna-test /src/contracts/test/fuzzing/KeepersCounterEchidnaTest.sol --contract KeepersCounterEchidnaTest --config /src/contracts/test/fuzzing/config.yaml
 ```
 
-To exit Echidna type
+To exit Echidna type:
 ```bash
 exit
 ```
